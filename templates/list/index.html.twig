@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %} {% block body %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card bg-light mb-3 mt-3">
+        <div class="card-body">
+          <div class="card-header">List of of Sunshine customers!</div>
+          {% if app.user != null %}
+          <table class="table">
+            <tr>
+              <th>Name</th>
+              <th>LastName</th>
+            </tr>
+            {% for paciente in pacientes %}
+            <tr>
+              <td>{{ paciente.firstname }}</td>
+              <td>{{ paciente.lastname }}</td>
+            </tr>
+            {% endfor %}
+          </table>
+          {% endif %}
+        </div>
+      </div>
+      {% if app.user == null %}
+      <a href="{{ path('app_login') }}" class="btn btn-danger">
+        You need to login to see this! >></a
+      >
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}
